@@ -44,11 +44,9 @@ class Genetic:
         self.__nxm_random_num=list(np.random.permutation(self.__num_gene)) # generate a random permutation of 0 to self.__num_job*num_mc-1
         self.__population_list.append(self.__nxm_random_num)
         for j in range(self.__num_gene):
-            self.__population_list[i][j]=self.__population_list[i][j]%self.__num_job # convert to job number format, every job appears m times
-       
-    def reproduction(self):
-        # Generate new groups
-        self.__Tbest_now=99999999999
+            self.__population_list[i][j]=self.__population_list[i][j]%self.__num_job # convert to job number format, every job appears m times   
+          
+    def crossover(self):
         #--- two point crossover ---
         self.__parent_list=copy.deepcopy(self.__population_list)
         self.__offspring_list=copy.deepcopy(self.__population_list)
@@ -165,6 +163,8 @@ class Genetic:
                         break
                     
     def compare(self):
+        # Generate new groups
+        self.__Tbest_now=99999999999
         # Compare
         for i in range(self.__parameters["populationSize"]*2):
             if self.__chrom_fit[i]<self.__Tbest_now:
@@ -187,7 +187,7 @@ class Genetic:
             
         for n in range(self.__parameters["maxGeneration"]):
             print("Generation:" + str(n), end='\r')
-            self.reproduction()
+            self.crossover()
             self.repair()  
             self.mutation()
             self.fitness()

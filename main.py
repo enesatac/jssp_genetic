@@ -9,14 +9,15 @@ import chart_studio.plotly as py
 import plotly.figure_factory as ff
 import datetime
 
+#import genetic as ga
 import genetic as ga
 
 ''' ================= initialization setting ======================'''
 
 genetic = ga.Genetic()
 
-pt_tmp=pd.read_excel("jssp_dataset_10.xlsx",sheet_name="Processing Time",index_col =[0])
-ms_tmp=pd.read_excel("jssp_dataset_10.xlsx",sheet_name="Machines Sequence",index_col =[0])
+pt_tmp=pd.read_excel("jssp_dataset.xlsx",sheet_name="Processing Time",index_col =[0])
+ms_tmp=pd.read_excel("jssp_dataset.xlsx",sheet_name="Machines Sequence",index_col =[0])
 
 genetic.initParameters(pt_tmp, ms_tmp)
     
