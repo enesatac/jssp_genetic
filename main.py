@@ -1,4 +1,4 @@
-'''==========Solving job shop scheduling problem by gentic algorithm in python======='''
+'''==========Solving job shop scheduling problem by genetic algorithm in python======='''
 # importing required modules
 import pandas as pd
 import numpy as np

@@ -9,10 +9,15 @@ import datetime
 
 class Genetic:
     
+    #--- QUESTION : burası gerçekten işe yarıyor mu, initParamda verilen default lar burayı eziyor mu? ---#
+    #--- QUESTION : parametreler aşağıdaki gibi olduğunda sonuca bak ---#
+    # populationSize = 100
+    # mutationRate = 0.01
+    # maxGeneration = 100
     def __init__(self):
-        # Initial基本參數
+        # Initial parameters
         self.__parameters = {
-            "populationSize": 30,
+            "populationSize": 30, 
             "crossoverRate": 0.8,
             "mutationRate": 0.2,
             "mutationSelectionRate": 0.2,
@@ -29,7 +34,6 @@ class Genetic:
         
         self.__pt=[list(map(int, pt_temp.iloc[i])) for i in range(self.__num_job)]
         self.__ms=[list(map(int, ms_temp.iloc[i])) for i in range(self.__num_job)]    
-
 
         # raw_input is used in python 2
         self.__parameters["populationSize"]=int(input('Please input the size of population: ') or 30) # default value is 30
@@ -199,14 +203,14 @@ class Genetic:
         print("optimal sequence",self.__sequence_best)
         print("optimal value:%f"%self.__Tbest) 
         
-    def drawFitnessPlot(self):
+    def drawFitnessPlot(self):               
         # Fitness (makespan) Plot
         plt.plot([i for i in range(len(self.__makespan_record))],self.__makespan_record,'b')
         plt.ylabel('makespan',fontsize=15)
         plt.xlabel('generation',fontsize=15)
         plt.show() 
         
-    def drawGanttChart(self):
+    def drawGanttChart(self):      
         # Gantt Chart
         m_keys=[j+1 for j in range(self.__num_mc)]
         j_keys=[j for j in range(self.__num_job)]
